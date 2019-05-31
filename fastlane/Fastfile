@@ -26,7 +26,7 @@ platform :android do
     #increment Version
     increment_version_code
     commit_android_version_bump
-    #push_to_git_remote
+    push_to_git_remote
     
     #build
     #gradle(task: 'assembleDebug assembleAndroidTest')
@@ -36,7 +36,7 @@ platform :android do
     #changelog_from_git_commits
     
     #upload
-    upload_to_play_store(track: 'beta')
+    #upload_to_play_store(track: 'beta')
     
     #notify
     slack_notification(message: "Build has been uploaded",

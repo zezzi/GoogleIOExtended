@@ -15,3 +15,4 @@ key.json
 .idea/vcs.xml
 Gemfile.lock
 .idea/misc.xml
+fastlane/report.xml

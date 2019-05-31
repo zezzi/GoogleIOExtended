@@ -33,7 +33,7 @@ platform :android do
     gradle(task: 'assembleRelease')
     
     #release_notes
-    #changelog_from_git_commits
+    changelog_from_git_commits
     
     #upload
     #upload_to_play_store(track: 'beta')

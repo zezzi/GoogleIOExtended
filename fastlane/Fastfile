@@ -29,7 +29,6 @@ platform :android do
     push_to_git_remote
     
     #build
-    #gradle(task: 'assembleDebug assembleAndroidTest')
     gradle(task: 'assembleRelease')
     
     #release_notes
@@ -62,3 +61,5 @@ platform :android do
      )
     end
 end
+
+#gradle(task: 'assembleDebug assembleAndroidTest')

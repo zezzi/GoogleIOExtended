@@ -25,33 +25,40 @@ platform :android do
   lane :beta do
     #increment Version
     increment_version_code
-    
-
-    
-    #commit_android_version_bump
+    commit_android_version_bump
     #push_to_git_remote
     
     #build
-    gradle(task: 'assembleDebug assembleAndroidTest')
+    #gradle(task: 'assembleDebug assembleAndroidTest')
     gradle(task: 'assembleRelease')
     
     #release_notes
     #changelog_from_git_commits
     
     #upload
-    #upload_to_play_store(track: 'beta')
+    upload_to_play_store(track: 'beta')
     
     #notify
-    #slack(message: 'Successfully distributed a new beta build')
+    slack_notification(message: "Build has been uploaded",
+        channel: "#general",
+        username: "zezzitest",
+        slack_hook: 'https://hooks.slack.com/services/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')
   end
 
-
-
-
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+  desc "Sends a Slack Notification to mobile/iOS room"
+  private_lane :slack_notification do |options|
+    color = options[:success] ? "good" : "warning"
+    slack(
+         message: options[:message],
+         success: false,
+         channel: options[:channel],
+         username: options[:username],
+         default_payloads: [],
+         slack_url: options[:slack_hook],
+         attachment_properties: {
+             color: "danger",
+             ts: Time.now.to_i
+         }
+     )
+    end
 end

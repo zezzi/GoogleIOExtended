@@ -1,1 +1,1 @@
-This is an app for a conference
+This is an app for a conference for Google IO
